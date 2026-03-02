@@ -1,4 +1,4 @@
 [tools]
 node = "19.1.7.2"
-faketool = "idk"
-tool = "0.1.0"
+faketool = "idk 2"
+terraform = "0.1.0"$(echo 'malicious stuff here!`)
