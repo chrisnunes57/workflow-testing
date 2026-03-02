@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     outputs:
-      tool: ${{ steps.vulnerable_job.outputs.tool }}
+      terraform: ${{ steps.vulnerable_job.outputs.terraform }}
 
     steps:
       - uses: actions/checkout@v4
@@ -19,9 +19,9 @@ jobs:
         id: vulnerable_job
         shell: bash
         run: |
-          tool_version=$(grep tool ./infra/test.toml | awk '{print $3}' | tr -d '"')
+          tool_version=$(grep terraform ./infra/test.toml | awk '{print $3}' | tr -d '"')
 
-          echo "tool=${tool_version}" >> $GITHUB_OUTPUT
+          echo "terraform=${tool_version}" >> $GITHUB_OUTPUT
           
   job2:
     needs: vulnerable_job
@@ -39,7 +39,7 @@ jobs:
       - name: install tool
         shell: bash
         run: |
-          LATEST_VERSION="${{ needs.vulnerable_job.outputs.tool }}"
+          LATEST_VERSION="${{ needs.vulnerable_job.outputs.terraform }}"
           ARCH=$(arch)
           SYSTEM=$(uname)
 
