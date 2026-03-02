@@ -1,0 +1,49 @@
+name: test
+
+on:
+  pull_request:
+    branches: ["main"]
+    types: [opened, synchronize, reopened]
+
+jobs:
+  vulnerable_job:
+    name: Tool Versions
+    runs-on: ubuntu-latest
+
+    outputs:
+      tool: ${{ steps.vulnerable_job.outputs.tool }}
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: parse tool versions
+        id: vulnerable_job
+        shell: bash
+        run: |
+          tool_version=$(grep tool ./infra/test.toml | awk '{print $3}' | tr -d '"')
+
+          echo "tool=${tool_version}" >> $GITHUB_OUTPUT
+          
+  job2:
+    needs: vulnerable_job
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write # required to merge PRs
+      actions: write # required for plan persistence
+      id-token: write # required for workload-identity-federation
+      pull-requests: write # required to post PR comments
+      issues: read # required to check if PR number is an issue or not
+      statuses: write # required to validate combined PR status
+
+    steps:
+      - name: install tool
+        shell: bash
+        run: |
+          LATEST_VERSION="${{ needs.vulnerable_job.outputs.tool }}"
+          ARCH=$(arch)
+          SYSTEM=$(uname)
+
+          echo "OUTPUT:"
+          echo "\t$LATEST_VERSION"
+          echo "\t$ARCH"
+          echo "\t$SYSTEM"
