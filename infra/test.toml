@@ -1,4 +1,4 @@
 [tools]
 node = "19.1.7.2"
-faketool = "idk"
+faketool = "idk 2"
 tool = "0.1.0"
